@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbPersonasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="idPersona" />
+    </Key>
+    <Property Name="idPersona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellido" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idTipoPersona" Type="Int32" />
+    <NavigationProperty Name="TipoPersona" Relationship="Self.FK__Persona__idTipoP__1367E606" FromRole="Persona" ToRole="TipoPersona" />
+  </EntityType>
+  <EntityType Name="TipoPersona">
+    <Key>
+      <PropertyRef Name="idTipoPersona" />
+    </Key>
+    <Property Name="idTipoPersona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcionTipoPersona" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Personas" Relationship="Self.FK__Persona__idTipoP__1367E606" FromRole="TipoPersona" ToRole="Persona" />
+  </EntityType>
+  <Association Name="FK__Persona__idTipoP__1367E606">
+    <End Role="TipoPersona" Type="Self.TipoPersona" Multiplicity="0..1" />
+    <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoPersona">
+        <PropertyRef Name="idTipoPersona" />
+      </Principal>
+      <Dependent Role="Persona">
+        <PropertyRef Name="idTipoPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DbPersonasEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Personas" EntityType="Self.Persona" />
+    <EntitySet Name="TipoPersonas" EntityType="Self.TipoPersona" />
+    <AssociationSet Name="FK__Persona__idTipoP__1367E606" Association="Self.FK__Persona__idTipoP__1367E606">
+      <End Role="TipoPersona" EntitySet="TipoPersonas" />
+      <End Role="Persona" EntitySet="Personas" />
+    </AssociationSet>
+    <FunctionImport Name="ActualizarPersona">
+      <Parameter Name="nombre" Mode="In" Type="String" />
+      <Parameter Name="apellido" Mode="In" Type="String" />
+      <Parameter Name="telefono" Mode="In" Type="String" />
+      <Parameter Name="idTipoPersona" Mode="In" Type="Int32" />
+      <Parameter Name="idPersona" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultarPersonas" ReturnType="Collection(DbPersonasModel.ConsultarPersonas_Result)" />
+    <FunctionImport Name="EliminarPersona">
+      <Parameter Name="idPersona" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InsertarPersona">
+      <Parameter Name="nombre" Mode="In" Type="String" />
+      <Parameter Name="apellido" Mode="In" Type="String" />
+      <Parameter Name="telefono" Mode="In" Type="String" />
+      <Parameter Name="idTipoPersona" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ActualizarPersona1">
+      <Parameter Name="nombre" Mode="In" Type="String" />
+      <Parameter Name="apellido" Mode="In" Type="String" />
+      <Parameter Name="telefono" Mode="In" Type="String" />
+      <Parameter Name="idTipoPersona" Mode="In" Type="Int32" />
+      <Parameter Name="idPersona" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InsertarPersona1">
+      <Parameter Name="nombre" Mode="In" Type="String" />
+      <Parameter Name="apellido" Mode="In" Type="String" />
+      <Parameter Name="telefono" Mode="In" Type="String" />
+      <Parameter Name="idTipoPersona" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="EliminarPersona1">
+      <Parameter Name="idPersona" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultarPersonas1" ReturnType="Collection(DbPersonasModel.ConsultarPersonas_Result)" />
+    <FunctionImport Name="ConsultarTipoPersonas" ReturnType="Collection(DbPersonasModel.ConsultarTipoPersonas_Result)" />
+    <FunctionImport Name="ConsultarTipoPersonas1" EntitySet="TipoPersonas" ReturnType="Collection(DbPersonasModel.TipoPersona)" />
+  </EntityContainer>
+  <ComplexType Name="ConsultarPersonas_Result">
+    <Property Type="Int32" Name="idPersona" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="apellido" Nullable="false" MaxLength="60" />
+    <Property Type="String" Name="telefono" Nullable="false" MaxLength="15" />
+    <Property Type="Int32" Name="idTipoPersona" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ConsultarTipoPersonas_Result">
+    <Property Type="Int32" Name="idTipoPersona" Nullable="false" />
+    <Property Type="String" Name="descripcionTipoPersona" Nullable="false" MaxLength="30" />
+  </ComplexType>
+</Schema>

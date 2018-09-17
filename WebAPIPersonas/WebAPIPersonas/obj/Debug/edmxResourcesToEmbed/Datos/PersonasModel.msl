@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DbPersonasModelStoreContainer" CdmEntityContainer="DbPersonasEntities">
+    <EntitySetMapping Name="Personas">
+      <EntityTypeMapping TypeName="DbPersonasModel.Persona">
+        <MappingFragment StoreEntitySet="Persona">
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="idTipoPersona" ColumnName="idTipoPersona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoPersonas">
+      <EntityTypeMapping TypeName="DbPersonasModel.TipoPersona">
+        <MappingFragment StoreEntitySet="TipoPersona">
+          <ScalarProperty Name="idTipoPersona" ColumnName="idTipoPersona" />
+          <ScalarProperty Name="descripcionTipoPersona" ColumnName="descripcionTipoPersona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ActualizarPersona" FunctionName="DbPersonasModel.Store.ActualizarPersona" />
+    <FunctionImportMapping FunctionImportName="ConsultarPersonas" FunctionName="DbPersonasModel.Store.ConsultarPersonas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DbPersonasModel.ConsultarPersonas_Result">
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="idTipoPersona" ColumnName="idTipoPersona" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="EliminarPersona" FunctionName="DbPersonasModel.Store.EliminarPersona" />
+    <FunctionImportMapping FunctionImportName="InsertarPersona" FunctionName="DbPersonasModel.Store.InsertarPersona" />
+    <FunctionImportMapping FunctionImportName="ActualizarPersona1" FunctionName="DbPersonasModel.Store.ActualizarPersona" />
+    <FunctionImportMapping FunctionImportName="InsertarPersona1" FunctionName="DbPersonasModel.Store.InsertarPersona" />
+    <FunctionImportMapping FunctionImportName="EliminarPersona1" FunctionName="DbPersonasModel.Store.EliminarPersona" />
+    <FunctionImportMapping FunctionImportName="ConsultarPersonas1" FunctionName="DbPersonasModel.Store.ConsultarPersonas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DbPersonasModel.ConsultarPersonas_Result">
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="idTipoPersona" ColumnName="idTipoPersona" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ConsultarTipoPersonas" FunctionName="DbPersonasModel.Store.ConsultarTipoPersonas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DbPersonasModel.ConsultarTipoPersonas_Result">
+          <ScalarProperty Name="idTipoPersona" ColumnName="idTipoPersona" />
+          <ScalarProperty Name="descripcionTipoPersona" ColumnName="descripcionTipoPersona" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ConsultarTipoPersonas1" FunctionName="DbPersonasModel.Store.ConsultarTipoPersonas" />
+  </EntityContainerMapping>
+</Mapping>
